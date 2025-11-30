@@ -3,9 +3,8 @@ import os
 import requests
 from typing import Dict, Any
 
-GROQ_API_URL = os.getenv("https://api.groq.com/openai/v1/chat/completions")  # placeholder
-GROQ_API_KEY = os.getenv("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")
-
+GROQ_API_URL = os.getenv("GROQ_API_URL", "https://api.groq.com/openai/v1/chat/completions")  # placeholder
+GROQ_API_KEY = os.getenv("GROQ_API_KEY", "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")
 def generate_workout(prompt: str, model: str = "groq-1") -> Dict[str, Any]:
     """
     Send prompt to Groq AI and return parsed JSON.
