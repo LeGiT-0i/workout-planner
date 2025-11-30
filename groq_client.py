@@ -4,7 +4,7 @@ import requests
 
 # Correct Groq API endpoint
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-GROQ_API_KEY = os.getenv("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")
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 def generate_workout(prompt: str) -> dict:
     """
