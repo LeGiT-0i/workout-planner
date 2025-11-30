@@ -6,11 +6,10 @@ GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 def generate_workout(prompt: str) -> dict:
     """
-    Send prompt to Groq AI using Chat Completions API and return the generated text.
-    Loads GROQ_API_KEY dynamically at runtime.
+    Send prompt to Groq AI and return the generated workout plan text.
+    Loads API key dynamically at runtime.
     """
 
-    # Load key dynamically here, not at import time
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     if not GROQ_API_KEY:
         raise ValueError("❌ GROQ_API_KEY is not set in environment variables!")
@@ -27,7 +26,7 @@ def generate_workout(prompt: str) -> dict:
         "temperature": 0.7,
     }
 
-    response = requests.post(GROQ_API_URL, json=payload, headers=headers, timeout=30)
+    response = requests.post(GROQ_API_URL, headers=headers, json=payload, timeout=30)
 
     if response.status_code != 200:
         print("===== GROQ API ERROR =====")
