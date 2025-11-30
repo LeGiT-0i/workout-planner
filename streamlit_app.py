@@ -8,6 +8,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+st.write("Loaded key:", os.getenv("GROQ_API_KEY"))
+
 st.set_page_config(page_title="Groq Workout Planner", layout="wide")
 
 st.title("🏋️ Workout Planner (Groq + Streamlit)")
