@@ -5,25 +5,23 @@ import requests
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
 def generate_workout(prompt: str) -> dict:
-    """
-    Send prompt to Groq AI and return the generated workout plan text.
-    Loads API key dynamically at runtime.
-    """
-
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     if not GROQ_API_KEY:
         raise ValueError("❌ GROQ_API_KEY is not set in environment variables!")
 
     headers = {
         "Authorization": f"Bearer {GROQ_API_KEY}",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
     }
 
     payload = {
         "model": "llama3-70b-8192",
-        "messages": [{"role": "user", "content": prompt}],
+        "messages": [
+            {"role": "system", "content": "You are a helpful fitness coach."},
+            {"role": "user", "content": prompt}
+        ],
         "max_tokens": 1000,
-        "temperature": 0.7,
+        "temperature": 0.7
     }
 
     response = requests.post(GROQ_API_URL, headers=headers, json=payload, timeout=30)
