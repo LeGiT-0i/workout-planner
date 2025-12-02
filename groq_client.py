@@ -4,6 +4,8 @@ import requests
 from dotenv import load_dotenv
 load_dotenv(override=True)
 
+GROQ_API_KEY="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"
+
 def generate_workout(prompt: str) -> dict:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     if not GROQ_API_KEY:
