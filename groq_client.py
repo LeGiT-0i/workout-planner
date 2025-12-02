@@ -1,8 +1,8 @@
 # groq_client.py
 import os
 import requests
-
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
+from dotenv import load_dotenv
+load_dotenv(override=True)
 
 def generate_workout(prompt: str) -> dict:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
